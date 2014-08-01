@@ -1,0 +1,62 @@
+﻿@model HertsElearningProject.ViewModel.DashboardViewModel
+@{
+    ViewBag.Title = "StudentIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<br />
+<h2>Student Dashboard</h2>
+<hr />
+<h4>Your Enrolled Courses</h4>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Course Name</th>
+            <th>Course Credits</th>
+            <th>Lecturer Id</th>
+            <th>Lecturer Name</th>
+            <th>Lecturer Lastname</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.StudentCoursesVM)
+        {
+
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.CourseName</td>
+                <td>@item.CourseCredits</td>
+                <td>@item.LecturerId</td>
+                <td>@item.LecturerName</td>
+                <td>@item.LecturerLastname</td>
+            </tr>
+
+        }
+    </tbody>
+
+</table>
+
+<h4>Your Page Visit Statistics</h4>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Page</th>
+            <th>Hit</th>
+            <th>Last Visit</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.PageHitsVM)
+        {
+
+            <tr>
+                <td>@item.PageName</td>
+                <td>@item.Hit</td>
+                <td>@item.LastVisitStamp</td>
+            </tr>
+
+        }
+    </tbody>
+</table>

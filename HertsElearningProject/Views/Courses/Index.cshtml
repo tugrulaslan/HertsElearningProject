@@ -1,0 +1,56 @@
+﻿@model IEnumerable<HertsElearningProject.Models.Courses>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<br />
+<h2>Courses</h2>
+
+<div class="alert-info" style="width:10%;">
+    @Html.ActionLink("Add a new course", "Create", "Courses")
+</div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Course Name</th>
+            <th>Course Credits</th>
+            <th>Lecturer Id</th>
+            <th>Lecturer Name</th>
+            <th>Lecturer Lastname</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseCredits)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LecturerId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LecturerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LecturerLastname)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<HertsElearningProject.Models.StudentCourses>
+@{
+    ViewBag.Title = "StudentIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<br />
+<h2>Your Courses</h2>
+<hr />
+
+<h4>Registered Courses</h4>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Course Name</th>
+            <th>Course Credits</th>
+            <th>Lecturer Id</th>
+            <th>Lecturer Name</th>
+            <th>Lecturer Lastname</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseCredits)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LecturerId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LecturerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LecturerLastname)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "DeleteStudentCourse", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+<br />
+@using (Html.BeginForm())
+{
+    <h4>Enroll a course</h4>
+    <table class="table table-hover">
+
+        <tbody>
+            <tr>
+                <td>@Html.DropDownList("Courses", null, new { @class = "form-control" })</td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="submit" value="Enroll" class="btn btn-lg btn-primary btn-block" style="width:13%;" />
+}

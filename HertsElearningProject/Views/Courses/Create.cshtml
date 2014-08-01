@@ -1,0 +1,41 @@
+﻿@model HertsElearningProject.Models.Courses
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <br />
+<br />
+<br />
+    <div class="form-horizontal" style="width:45%;">
+        <h2>Creating a new course</h2>
+        @Html.ValidationSummary(true)
+        <table class="table table-hover">
+
+            <tbody>
+                <tr>
+                    <td>@Html.LabelFor(model => model.CourseName, new { @class = "control-label col-md-2" })</td>
+                    <td>@Html.TextBoxFor(model => model.CourseName, new { @class = "form-control" })</td>
+                    <td>@Html.ValidationMessageFor(model => model.CourseName)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.CourseCredits, new { @class = "control-label col-md-2" })</td>
+                    <td>@Html.TextBoxFor(model => model.CourseCredits, new { @class = "form-control" })</td>
+                    <td>@Html.ValidationMessageFor(model => model.CourseCredits)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.LecturerId, new { @class = "control-label col-md-2" })</td>
+                    <td>@Html.DropDownList("LecturerId", null, new { @class = "form-control" })</td>
+                    <td>@Html.ValidationMessageFor(model => model.LecturerId)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <input type="submit" value="Add" class="btn btn-lg btn-primary btn-block" style="width:17%;" />
+}
+

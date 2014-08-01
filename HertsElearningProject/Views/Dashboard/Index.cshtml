@@ -1,0 +1,226 @@
+﻿@model HertsElearningProject.ViewModel.DashboardViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<br />
+<h2>Dashboard</h2>
+<hr />
+<h4>User Statistics</h4>
+<hr />
+<iframe src="UsersChart.aspx" width="40%" height="310px" frameborder="0"></iframe>
+<br />
+total users : @ViewBag.totalUserCount
+total students: @ViewBag.totalStudents
+total lecturers: @ViewBag.totalLecturers
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Lastname</th>
+            <th>Role</th>
+            <th>Last Login</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.UsersVM)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Username</td>
+                <td>@item.Email</td>
+                <td>@item.Name</td>
+                <td>@item.Lastname</td>
+                <td>@item.UserRole</td>
+                <td>@item.LastLogin</td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+<br />
+<h4>Page Hit Statistics</h4>
+<hr />
+<iframe src="PageHitsChart.aspx" width="70%" height="380px" frameborder="0"></iframe>
+<br />
+Most visited page: @ViewBag.mostViewedPage, Hit: @ViewBag.mostViewedPageHit, Last Visit: @ViewBag.mostViewedVisitDate<br />
+Total Data: @ViewBag.totalVisitData
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Page Name</th>
+            <th>Username</th>
+            <th>Hit</th>
+            <th>Last Visit</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.PageHitsVM)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.PageName</td>
+                <td>@item.Username</td>
+                <td>@item.Hit</td>
+                <td>@item.LastVisitStamp</td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+<br />
+<h4>Visitor Statistics</h4>
+<hr />
+<iframe src="VisitorStatsChart.aspx" width="100%" height="650px" frameborder="0"></iframe>
+Countries(@ViewBag.totalCountry):
+<ul>
+    @foreach (var c in ViewBag.Country)
+    {
+        <li>@c</li>
+    }
+</ul>
+Operating Systems(@ViewBag.totalOS):
+<ul>
+    @foreach (var c in ViewBag.OS)
+    {
+        <li>@c</li>
+    }
+</ul>
+Devices(@ViewBag.totalDevice):
+<ul>
+    @foreach (var c in ViewBag.Device)
+    {
+        <li>@c</li>
+    }
+</ul>
+Browsers(@ViewBag.totalBrowser):
+<ul>
+    @foreach (var c in ViewBag.Browser)
+    {
+        <li>@c</li>
+    }
+</ul>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Session Id</th>
+            <th>IP Address</th>
+            <th>Country</th>
+            <th>OS</th>
+            <th>Device</th>
+            <th>Browser</th>
+            <th>Visit Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.VisitorStatsVM)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.UserSession</td>
+                <td>@item.IPAddress</td>
+                <td>@item.Country</td>
+                <td>@item.OperatingSystem</td>
+                <td>@item.Device</td>
+                <td>@item.BrowserName</td>
+                <td>@item.VisitTimeStamp</td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+<br />
+<h4>Courses Statistics</h4>
+<hr />
+<iframe src="CoursesChart.aspx" width="50%" height="320px" frameborder="0"></iframe><br />
+<br />
+There are @ViewBag.totalCourses courses taught by @ViewBag.totalLecturers lecturers
+Sum of credits : @ViewBag.totalCredits
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Course Name</th>
+            <th>Course Credits</th>
+            <th>Lecturer Id</th>
+            <th>Lecturer Name</th>
+            <th>Lecturer Lastname</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CoursesVM)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.CourseName</td>
+                <td>@item.CourseCredits</td>
+                <td>@item.LecturerId</td>
+                <td>@item.LecturerName</td>
+                <td>@item.LecturerLastname</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<h4>Enrolled Courses</h4>
+<hr />
+<iframe src="EnrolledCoursesChart.aspx" width="50%" height="320px" frameborder="0"></iframe><br />
+There are currently @ViewBag.studentCount students enrolled in @ViewBag.enrolledCourseAmount courses and @ViewBag.enrolledAchievedCredits credits will be achieved in total
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Course Name</th>
+            <th>Course Credits</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.StudentCoursesVM)
+        {
+
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Username</td>
+                <td>@item.CourseName</td>
+                <td>@item.CourseCredits</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<h4>Search Keyword Statistics</h4>
+<hr />
+<iframe src="SearchChart.aspx" width="50%" height="340px" frameborder="0"></iframe><br />
+<br />
+Users searched for @ViewBag.amountSearchKeyword keywords, most searched keyword is "@ViewBag.mostSearchedKeyword" searched for @ViewBag.mostSearchedKeywordHit times
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Keyword</th>
+            <th>Hit</th>
+            <th>Search Timestamp</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.SearchVM)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Keyword</td>
+                <td>@item.Hit</td>
+                <td>@item.SearchTimeStamp</td>
+            </tr>
+        }
+    </tbody>
+</table>

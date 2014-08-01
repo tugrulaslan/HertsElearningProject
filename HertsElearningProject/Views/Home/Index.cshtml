@@ -1,0 +1,128 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")" type="text/javascript"></script>
+<h2>Index</h2>
+<style>
+    .carousel-fade .item {
+        -webkit-transition: opacity 3s;
+        -moz-transition: opacity 3s;
+        -ms-transition: opacity 3s;
+        -o-transition: opacity 3s;
+        transition: opacity 3s;
+    }
+
+    .carousel-fade .active.left {
+        left: 0;
+        opacity: 0;
+        z-index: 2;
+    }
+
+    .carousel-fade .next {
+        left: 0;
+        opacity: 1;
+        z-index: 1;
+    }
+</style>
+<div id="myCarousel" class="carousel carousel-fade slide">
+    <!-- Carousel indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0"
+            class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+        <li data-target="#myCarousel" data-slide-to="4"></li>
+    </ol>
+    <!-- Carousel items -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="~/Images/de-havilland.jpg">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Access our expertise and enhance your business</h1>
+                    <p>Get measurable results for your business or organisation with the help of our tailored business support services</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="~/Images/guardian.jpg">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Hertfordshire climbs 16 places the Guardian University Guide</h1>
+                    <p>The University of Hertfordshire has seen a rise in its position in The Guardian’s University League Table Guide 2015, having moved 16 places up the table.</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="~/Images/under-50-banner-large.jpg">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Hertfordshire ranked in the top 9 of UK Universities</h1>
+                    <p>We have been ranked one of the top 100 Universities in the world under 50 years old. Ranked at number 60, this sees a climb from last year of 15 places on the Times Higher Education rankings.</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="~/Images/law-court.jpg">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>State-of-the-art learning resources</h1>
+                    <p>Take a 360 virtual tour of our facilities to see why you should choose the University of Hertfordshire</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="~/Images/lab-students.jpg">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Inspiring and sustainable research solutions</h1>
+                    <p>From the nature of galaxies and children with autism to the world of finance – research at the University of Hertfordshire impacts on a wide range of areas affecting us every day</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carousel nav -->
+        <a class="carousel-control left" href="#myCarousel"
+           data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#myCarousel"
+           data-slide="next">&rsaquo;</a>
+    </div>
+
+    <script>
+        $(function () {
+            // Initializes the carousel
+            $(".start-slide").click(function () {
+                $("#myCarousel").carousel('cycle');
+            });
+            // Stops the carousel
+            $(".pause-slide").click(function () {
+                $("#myCarousel").carousel('pause');
+            });
+            // Cycles to the previous item
+            $(".prev-slide").click(function () {
+                $("#myCarousel").carousel('prev');
+            });
+            // Cycles to the next item
+            $(".next-slide").click(function () {
+                $("#myCarousel").carousel('next');
+            });
+            // Cycles the carousel to a particular frame
+            $(".slide-one").click(function () {
+                $("#myCarousel").carousel(0);
+            });
+            $(".slide-two").click(function () {
+                $("#myCarousel").carousel(1);
+            });
+            $(".slide-three").click(function () {
+                $("#myCarousel").carousel(2);
+            });
+            $(".slide-four").click(function () {
+                $("#myCarousel").carousel(1);
+            });
+            $(".slide-five").click(function () {
+                $("#myCarousel").carousel(2);
+            });
+        });
+    </script>
+</div>

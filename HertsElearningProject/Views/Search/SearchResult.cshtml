@@ -1,0 +1,81 @@
+﻿@model HertsElearningProject.ViewModel.SearchViewModel
+@{
+    ViewBag.Title = "SearchResult";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<br />
+<h2>Search Result</h2>
+<hr />
+@if (Model.UsersVM.Count > 0)
+{
+    <h4>@Model.UsersVM.Count Result(s) found for the keyword "@Model.search.Keyword" in Users</h4>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Lastname</th>
+                <th>Role</th>
+                <th>Last Login</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model.UsersVM)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Username</td>
+                    <td>@item.Email</td>
+                    <td>@item.Name</td>
+                    <td>@item.Lastname</td>
+                    <td>@item.UserRole</td>
+                    <td>@item.LastLogin</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <br />
+    <h4>No Result found for the keyword "@Model.search.Keyword" in Users</h4>
+}
+<br />
+@if (Model.CoursesVM.Count > 0)
+{
+    <h4>@Model.CoursesVM.Count Result(s) found for the keyword "@Model.search.Keyword" in Courses</h4>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Course Name</th>
+                <th>Course Credits</th>
+                <th>Lecturer Id</th>
+                <th>Lecturer Name</th>
+                <th>Lecturer Lastname</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CoursesVM)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.CourseName</td>
+                    <td>@item.CourseCredits</td>
+                    <td>@item.LecturerId</td>
+                    <td>@item.LecturerName</td>
+                    <td>@item.LecturerLastname</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h4>No Result found for the keyword "@Model.search.Keyword" in Courses</h4>
+}

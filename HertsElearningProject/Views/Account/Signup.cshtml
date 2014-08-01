@@ -1,0 +1,75 @@
+﻿@model HertsElearningProject.Models.SignUpModel
+@{
+    ViewBag.Title = "Signup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Signup</h2>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.9.1.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal" style="width:45%;">
+        @Html.ValidationSummary(true)
+
+        <table class="table table-hover">
+
+            <tbody>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Username, new { @class = "control-label col-md-2" })</td>
+                    <td>@Html.TextBoxFor(model => model.Username, new { @class = "form-control" })</td>
+                    <td>@Html.ValidationMessageFor(model => model.Username)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })</td>
+                    <td>@Html.PasswordFor(model => model.Password, new { @class = "form-control" })</td>
+                    <td>@Html.ValidationMessageFor(model => model.Password)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })</td>
+                    <td>@Html.TextBoxFor(model => model.Email, new { @class = "form-control" })</td>
+                    <td>@Html.ValidationMessageFor(model => model.Email)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })</td>
+                    <td>@Html.TextBoxFor(model => model.Name, new { @class = "form-control" })</td>
+                    <td>@Html.ValidationMessageFor(model => model.Name)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Lastname, new { @class = "control-label col-md-2" })</td>
+                    <td>@Html.TextBoxFor(model => model.Lastname, new { @class = "form-control" })</td>
+                    <td>@Html.ValidationMessageFor(model => model.Lastname)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.UserRole, new { @class = "control-label col-md-2" })</td>
+                    <td>
+                        @{
+    List<SelectListItem> roles = new List<SelectListItem>();
+    roles.Add(new SelectListItem
+    {
+        Text = "Student",
+        Value = "Student"
+    }
+    );
+    roles.Add(new SelectListItem
+    {
+        Text = "Lecturer",
+        Value = "Lecturer"
+    }
+    );
+    @Html.DropDownListFor(model => model.UserRole, roles, null, new { @class = "form-control" })
+                    }
+                </td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <input type="submit" value="Proceed" class="btn btn-lg btn-primary btn-block" style="width:17%;" />
+</div>
+}
