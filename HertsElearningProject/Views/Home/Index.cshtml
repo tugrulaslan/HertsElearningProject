@@ -24,6 +24,12 @@
         z-index: 1;
     }
 </style>
+<br />
+@if (ViewBag.message == "takeexam")
+{
+    <font color="RED"><h2>You have not taken the graduation exam!</h2></font>
+    <a href="graduationtest.aspx?userName=@User.Identity.Name" target="_blank"><span>Click to take it!</span></a>
+}
 <div id="myCarousel" class="carousel carousel-fade slide">
     <!-- Carousel indicators -->
     <ol class="carousel-indicators">

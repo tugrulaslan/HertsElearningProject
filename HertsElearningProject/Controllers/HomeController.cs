@@ -1,4 +1,5 @@
-﻿using HertsElearningProject.Service;
+﻿using HertsElearningProject.Models;
+using HertsElearningProject.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,8 +15,21 @@ namespace HertsElearningProject.Controllers
         PageHitsService pageHitsService = new PageHitsService();
         VisitorStatsService visitorStatsService = new VisitorStatsService();
         String sessionId = System.Web.HttpContext.Current.Session.SessionID;
+        HertsOnlineEntities db = new HertsOnlineEntities();
         public ActionResult Index()
         {
+            //check the exam status
+            if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("Student"))
+                {
+                    var taken = db.StudentExamEntity.Where(x => x.StudentName == User.Identity.Name).Count();
+                    if (taken == 0)
+                    {
+                        @ViewBag.message = "takeexam";
+                    }
+                }
+            }
             if (User.Identity.IsAuthenticated)
             {
                 pageHitsService.updatePageHit("Home/Index", User.Identity.Name.ToString());

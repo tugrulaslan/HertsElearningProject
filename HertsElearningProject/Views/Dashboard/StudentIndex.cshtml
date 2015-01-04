@@ -8,6 +8,45 @@
 <br />
 <h2>Student Dashboard</h2>
 <hr />
+@if (ViewBag.message == "takeexam")
+{
+    <font color="RED"><h2>You have not taken the graduation exam!</h2></font>
+    <a href="../graduationtest.aspx?userName=@User.Identity.Name" target="_blank"><span>Click to take it!</span></a>
+}
+else
+{
+    <h4>Graduation Test Score / Analytics Data</h4>
+    <table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Question</th>
+            <th>Correct Answer</th>
+            <th>Your Answer</th>
+            <th>Result</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ExamVM)
+        {
+
+            <tr>
+                <td>@item.Question</td>
+                <td>@item.Answer</td>                
+                <td>@item.StudentAnswer</td>
+                <td>
+                @if(@item.Correct.Equals("Correct")){
+                   <font color="green">@item.Correct</font>
+                    }else{
+                    <font color="red">@item.Correct</font>
+                    }
+                </td>
+            </tr>
+
+        }
+    </tbody>
+
+</table>
+}
 <h4>Your Enrolled Courses</h4>
 <table class="table table-hover">
     <thead>

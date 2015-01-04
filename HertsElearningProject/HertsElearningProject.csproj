@@ -126,6 +126,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="graduationtest.aspx" />
     <Content Include="Images\de-havilland.jpg" />
     <Content Include="Images\guardian.jpg" />
     <Content Include="Images\lab-students.jpg" />
@@ -143,6 +144,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="SearchChart.aspx" />
+    <Content Include="StudentExams.aspx" />
     <Content Include="UsersChart.aspx" />
     <Content Include="VisitorStatsChart.aspx" />
     <Content Include="Web.config" />
@@ -189,6 +191,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="graduationtest.aspx.cs">
+      <DependentUpon>graduationtest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="graduationtest.aspx.designer.cs">
+      <DependentUpon>graduationtest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Courses.cs" />
     <Compile Include="Models\HertsOnlineEntities.cs" />
@@ -197,6 +206,7 @@
     <Compile Include="Models\Search.cs" />
     <Compile Include="Models\SignUpModel.cs" />
     <Compile Include="Models\StudentCourses.cs" />
+    <Compile Include="Models\StudentExam.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Models\VisitorStatistics.cs" />
     <Compile Include="MyRoleProvider.cs" />
@@ -218,6 +228,13 @@
     <Compile Include="Service\PageHitsService.cs" />
     <Compile Include="Service\SearchService.cs" />
     <Compile Include="Service\VisitorStatsService.cs" />
+    <Compile Include="StudentExams.aspx.cs">
+      <DependentUpon>StudentExams.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StudentExams.aspx.designer.cs">
+      <DependentUpon>StudentExams.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UsersChart.aspx.cs">
       <DependentUpon>UsersChart.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

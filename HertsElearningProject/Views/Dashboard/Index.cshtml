@@ -8,6 +8,48 @@
 <br />
 <h2>Dashboard</h2>
 <hr />
+<h4>Student Graduation Exam / Data Analytics</h4>
+<hr />
+
+<iframe src="StudentExams.aspx" width="60%" height="355px" frameborder="0"></iframe><br />
+Amount of test takers: @ViewBag.totalTestTakers,<br />
+Amount of Correct Answers: @ViewBag.totalCorrect,<br />
+Amount of Incorrect Answers: @ViewBag.totalIncorrect,<br />
+Total Average: @ViewBag.totalRatio%
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Student Name</th>
+            <th>Question</th>
+            <th>Correct Answer</th>
+            <th>Your Answer</th>
+            <th>Result</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ExamVM)
+        {
+            <tr>
+                <td>@item.StudentName</td>
+                <td>@item.Question</td>
+                <td>@item.Answer</td>
+                <td>@item.StudentAnswer</td>
+                <td>
+                    @if (@item.Correct.Equals("Correct"))
+                    {
+                        <font color="green">@item.Correct</font>
+                    }
+                    else
+                    {
+                        <font color="red">@item.Correct</font>
+                    }
+                </td>
+            </tr>
+
+        }
+    </tbody>
+
+</table>
 <h4>User Statistics</h4>
 <hr />
 <iframe src="UsersChart.aspx" width="40%" height="310px" frameborder="0"></iframe>

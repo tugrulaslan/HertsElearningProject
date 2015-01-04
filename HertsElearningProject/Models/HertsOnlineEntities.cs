@@ -14,5 +14,6 @@ namespace HertsElearningProject.Models
         public DbSet<Courses> CoursesEntity { get; set; }
         public DbSet<Search> SearchEntity { get; set; }
         public DbSet<StudentCourses> StudentCourseEntity { get; set; }
+        public DbSet<StudentExam> StudentExamEntity { get; set; }
     }
 }

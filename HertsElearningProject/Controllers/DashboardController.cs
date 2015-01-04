@@ -26,9 +26,38 @@ namespace HertsElearningProject.Controllers
             List<Courses> coursesVM = db.CoursesEntity.OrderBy(o => o.Id).ToList();
             List<Search> searchVM = db.SearchEntity.OrderByDescending(o => o.Hit).ToList();
             List<StudentCourses> studentCoursesVM = db.StudentCourseEntity.OrderBy(o => o.Id).ToList();
+            List<StudentExam> examVM = db.StudentExamEntity.ToList();
 
-            //counts
-            ViewBag.totalUserCount = db.UserEntity.Count();
+
+
+            //analytics data
+            int correctAns = 0;
+            int inCorrectAns = 0;
+            String message = "";
+            List<StudentExam> studentExams = db.StudentExamEntity.ToList();
+
+            for (int i = 0; i < studentExams.Count; i++)
+            {
+                if (studentExams.ElementAt(i).Correct.Equals("Correct"))
+                {
+                    correctAns++;
+
+                }
+                else
+                {
+                    inCorrectAns++;
+                }
+             
+            }
+
+ 
+            ViewBag.totalTestTakers = db.StudentExamEntity.Count()/5;
+            ViewBag.totalCorrect = correctAns;
+            ViewBag.totalIncorrect = inCorrectAns;
+            ViewBag.totalRatio = correctAns / inCorrectAns;
+
+                //counts
+                ViewBag.totalUserCount = db.UserEntity.Count();
 
             ViewBag.totalStudents = db.UserEntity.Where(u => u.UserRole == "Student").Count();
 
@@ -126,6 +155,7 @@ namespace HertsElearningProject.Controllers
             vm.CoursesVM = coursesVM;
             vm.SearchVM = searchVM;
             vm.StudentCoursesVM = studentCoursesVM;
+            vm.ExamVM = examVM;
 
             pageHits.updatePageHit("Dashboard/Index", User.Identity.Name);
 
@@ -135,6 +165,20 @@ namespace HertsElearningProject.Controllers
         [Authorize(Roles = "Student")]
         public ActionResult StudentIndex()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("Student"))
+                {
+                    var taken = db.StudentExamEntity.Where(x => x.StudentName == User.Identity.Name).Count();
+                    if (taken == 0)
+                    {
+                        @ViewBag.message = "takeexam";
+                    }
+                    
+                }
+            }
+
+
             DashboardViewModel vm = new DashboardViewModel();
             List<Users> userVM = db.UserEntity.Where(x => x.Username == User.Identity.Name).ToList();
             List<PageHits> pageHitsVM = db.PageHitsEntity.Where(y => y.Username == User.Identity.Name).OrderByDescending(o => o.Hit).ToList();
@@ -143,6 +187,15 @@ namespace HertsElearningProject.Controllers
             vm.UsersVM = userVM;
             vm.PageHitsVM = pageHitsVM;
             vm.StudentCoursesVM = studentCourseVM;
+
+            var takenn = db.StudentExamEntity.Where(x => x.StudentName == User.Identity.Name).Count();
+            if (takenn > 0)
+            {
+                List<StudentExam> studentExamVM = db.StudentExamEntity.Where(e => e.StudentName == User.Identity.Name).ToList();
+                vm.ExamVM = studentExamVM;
+            }
+            
+
 
             pageHits.updatePageHit("Dashboard/StudentIndex", User.Identity.Name);
 

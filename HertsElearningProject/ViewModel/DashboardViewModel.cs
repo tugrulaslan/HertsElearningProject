@@ -14,5 +14,7 @@ namespace HertsElearningProject.ViewModel
         public List<Courses> CoursesVM { get; set; }
         public List<Search> SearchVM { get; set; }
         public List<StudentCourses> StudentCoursesVM { get; set; }
+
+        public List<StudentExam> ExamVM { get; set; }
     }
 }
